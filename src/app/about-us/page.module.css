@@ -1,0 +1,203 @@
+.aboutSection {}
+
+.eyebrow {
+  font-size: var(--text-xs);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--color-accent);
+  margin-bottom: var(--space-3);
+}
+
+.sectionTitle {
+  font-size: clamp(var(--text-2xl), 3.5vw, var(--text-4xl));
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin-bottom: var(--space-6);
+}
+
+.bodyText {
+  color: var(--color-text-muted);
+  font-size: var(--text-base);
+  line-height: 1.85;
+  margin-bottom: var(--space-5);
+  text-align: justify;
+}
+
+/* ── Welcome + MVS grid ── */
+.introGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-16);
+  align-items: flex-start;
+  margin-bottom: var(--space-14);
+}
+
+.introLeft {}
+
+.introRight {}
+
+/* Mission / Vision / Spirit */
+.mvs {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-2xl);
+  overflow: hidden;
+}
+
+.mvsItem {
+  padding: var(--space-6) var(--space-8);
+  border-bottom: 1px solid var(--color-border);
+  transition: background var(--transition-base);
+}
+
+.mvsItem:last-child {
+  border-bottom: none;
+}
+
+.mvsItem:hover {
+  background: rgba(0, 200, 232, 0.04);
+}
+
+.mvsLabel {
+  font-size: var(--text-sm);
+  font-weight: 700;
+  color: var(--color-accent);
+  margin-bottom: var(--space-2);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.mvsText {
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+  line-height: 1.75;
+  margin: 0;
+}
+
+/* ── CTA Banner ── */
+.ctaBanner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-8);
+  background: linear-gradient(135deg, rgba(0, 200, 232, 0.1) 0%, rgba(0, 128, 255, 0.08) 100%);
+  border: 1px solid var(--color-border-accent);
+  border-radius: var(--radius-2xl);
+  padding: var(--space-8) var(--space-10);
+  margin-bottom: var(--space-20);
+}
+
+.ctaBannerContent {}
+
+.ctaBannerTitle {
+  font-size: var(--text-xl);
+  font-weight: 800;
+  color: var(--color-white);
+  margin-bottom: var(--space-2);
+}
+
+.ctaBannerSub {
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+  margin: 0;
+}
+
+.ctaBannerBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 0.875rem 2rem;
+  background: var(--gradient-accent);
+  color: #000;
+  font-weight: 700;
+  border-radius: var(--radius-full);
+  white-space: nowrap;
+  transition: all var(--transition-base);
+  box-shadow: 0 0 24px rgba(0, 200, 232, 0.3);
+  flex-shrink: 0;
+}
+
+.ctaBannerBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 40px rgba(0, 200, 232, 0.5);
+  filter: brightness(1.1);
+}
+
+/* ── Company at a Glance ── */
+.glanceSection {
+  padding-top: var(--space-4);
+}
+
+.concernsList {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-2xl);
+  overflow: hidden;
+  margin-top: var(--space-8);
+}
+
+.concernItem {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-6);
+  padding: var(--space-5) var(--space-8);
+  border-bottom: 1px solid var(--color-border);
+  transition: background var(--transition-base);
+}
+
+.concernItem:last-child {
+  border-bottom: none;
+}
+
+.concernItem:hover {
+  background: rgba(0, 200, 232, 0.04);
+}
+
+.concernNum {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: rgba(0, 200, 232, 0.1);
+  border: 1px solid rgba(0, 200, 232, 0.25);
+  border-radius: var(--radius-full);
+  font-size: var(--text-xs);
+  font-weight: 800;
+  color: var(--color-accent);
+  flex-shrink: 0;
+  font-family: var(--font-heading);
+}
+
+.concernName {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-text);
+  line-height: 1.6;
+  margin: 0;
+  padding-top: var(--space-2);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .introGrid {
+    grid-template-columns: 1fr;
+    gap: var(--space-10);
+  }
+}
+
+@media (max-width: 640px) {
+  .ctaBanner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .concernItem {
+    padding: var(--space-4) var(--space-5);
+  }
+}
