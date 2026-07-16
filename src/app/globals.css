@@ -328,8 +328,8 @@ h1, h2, h3, h4, h5, h6 {
 .reveal {
   opacity: 0;
   transform: translateY(40px);
-  transition: opacity 1.35s cubic-bezier(0.16, 1, 0.3, 1),
-    transform 1.35s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: opacity 1.8s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 1.8s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: transform, opacity;
 }
 
@@ -341,8 +341,8 @@ h1, h2, h3, h4, h5, h6 {
 .reveal-left {
   opacity: 0;
   transform: translateX(-50px);
-  transition: opacity 1.35s cubic-bezier(0.16, 1, 0.3, 1),
-    transform 1.35s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: opacity 1.8s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 1.8s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: transform, opacity;
 }
 
@@ -354,8 +354,8 @@ h1, h2, h3, h4, h5, h6 {
 .reveal-right {
   opacity: 0;
   transform: translateX(50px);
-  transition: opacity 1.35s cubic-bezier(0.16, 1, 0.3, 1),
-    transform 1.35s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: opacity 1.8s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 1.8s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: transform, opacity;
 }
 
@@ -365,14 +365,14 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* Stagger delays */
-.reveal-delay-1 { transition-delay: 0.15s; }
-.reveal-delay-2 { transition-delay: 0.3s; }
-.reveal-delay-3 { transition-delay: 0.45s; }
-.reveal-delay-4 { transition-delay: 0.6s; }
-.reveal-delay-5 { transition-delay: 0.75s; }
-.reveal-delay-6 { transition-delay: 0.9s; }
-.reveal-delay-7 { transition-delay: 1.05s; }
-.reveal-delay-8 { transition-delay: 1.2s; }
+.reveal-delay-1 { transition-delay: 0.25s; }
+.reveal-delay-2 { transition-delay: 0.5s; }
+.reveal-delay-3 { transition-delay: 0.75s; }
+.reveal-delay-4 { transition-delay: 1.0s; }
+.reveal-delay-5 { transition-delay: 1.25s; }
+.reveal-delay-6 { transition-delay: 1.5s; }
+.reveal-delay-7 { transition-delay: 1.75s; }
+.reveal-delay-8 { transition-delay: 2.0s; }
 
 /* ============================================================
    CARD / GLASS UTILITIES
@@ -411,7 +411,7 @@ h1, h2, h3, h4, h5, h6 {
    PAGE TRANSITIONS
    ============================================================ */
 main {
-  animation: fadeInUp 0.85s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation: fadeInUp 1.8s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
 /* ============================================================

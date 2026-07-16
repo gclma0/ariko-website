@@ -1,5 +1,5 @@
 .wrapper {
-  animation: fadeInUp 1.35s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation: fadeInUp 1.8s cubic-bezier(0.16, 1, 0.3, 1) both;
   will-change: transform, opacity;
 }
 
