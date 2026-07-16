@@ -23,6 +23,13 @@ export const metadata: Metadata = {
     default: "ARIKO International | Leading Mill Scale Exporter from Bangladesh",
     template: "%s | ARIKO International",
   },
+  icons: {
+    icon: [
+      { url: "/favicon.png", type: "image/png" },
+    ],
+    apple: "/favicon.png",
+    shortcut: "/favicon.png",
+  },
   description:
     "ARIKO International — Bangladesh's premier exporter of mill scale, zinc oxide, PET flakes, and jute products. 4th largest ship scraper. Part of East Queen Group since 1968.",
   keywords: [

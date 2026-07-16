@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Mail, Phone, MapPin, ArrowUpCircle } from "lucide-react";
 
 const FacebookIcon = () => (
@@ -38,24 +39,14 @@ export default function Footer() {
         {/* Brand Column */}
         <div className={styles.brandCol}>
           <Link href="/" className={styles.footerLogo}>
-            <svg width="40" height="40" viewBox="0 0 36 36" fill="none">
-              <polygon points="18,2 34,32 2,32" fill="none" stroke="url(#fg1)" strokeWidth="2.5" strokeLinejoin="round"/>
-              <polygon points="18,10 28,28 8,28" fill="url(#fg2)" opacity="0.3"/>
-              <defs>
-                <linearGradient id="fg1" x1="0" y1="0" x2="1" y2="1">
-                  <stop offset="0%" stopColor="#00c8e8"/>
-                  <stop offset="100%" stopColor="#0080ff"/>
-                </linearGradient>
-                <linearGradient id="fg2" x1="0" y1="0" x2="1" y2="1">
-                  <stop offset="0%" stopColor="#00c8e8"/>
-                  <stop offset="100%" stopColor="#0080ff"/>
-                </linearGradient>
-              </defs>
-            </svg>
-            <div>
-              <div className={styles.footerLogoName}>ARIKO</div>
-              <div className={styles.footerLogoSub}>INTERNATIONAL</div>
-            </div>
+            <Image
+              src="/logo.svg"
+              alt="ARIKO International Logo"
+              width={200}
+              height={28}
+              className={styles.footerLogoImage}
+              unoptimized
+            />
           </Link>
 
           <p className={styles.brandDesc}>

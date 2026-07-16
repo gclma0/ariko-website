@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useState, useEffect, useRef } from "react";
 import { Phone, Mail, Menu, X, ChevronDown } from "lucide-react";
@@ -73,26 +74,15 @@ export default function Header() {
         <div className={`container ${styles.headerInner}`}>
           {/* Logo */}
           <Link href="/" className={styles.logo}>
-            <div className={styles.logoMark}>
-              <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <polygon points="18,2 34,32 2,32" fill="none" stroke="url(#g1)" strokeWidth="2.5" strokeLinejoin="round"/>
-                <polygon points="18,10 28,28 8,28" fill="url(#g2)" opacity="0.3"/>
-                <defs>
-                  <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
-                    <stop offset="0%" stopColor="#00c8e8"/>
-                    <stop offset="100%" stopColor="#0080ff"/>
-                  </linearGradient>
-                  <linearGradient id="g2" x1="0" y1="0" x2="1" y2="1">
-                    <stop offset="0%" stopColor="#00c8e8"/>
-                    <stop offset="100%" stopColor="#0080ff"/>
-                  </linearGradient>
-                </defs>
-              </svg>
-            </div>
-            <div className={styles.logoText}>
-              <span className={styles.logoName}>ARIKO</span>
-              <span className={styles.logoSub}>INTERNATIONAL</span>
-            </div>
+            <Image
+              src="/logo.svg"
+              alt="ARIKO International Logo"
+              width={200}
+              height={28}
+              className={styles.logoImage}
+              priority
+              unoptimized
+            />
           </Link>
 
           {/* Desktop Nav */}

@@ -81,39 +81,15 @@
 .logo {
   display: flex;
   align-items: center;
-  gap: var(--space-3);
   text-decoration: none;
   flex-shrink: 0;
 }
 
-.logoMark {
-  flex-shrink: 0;
-  animation: float 4s ease-in-out infinite;
-}
-
-.logoText {
-  display: flex;
-  flex-direction: column;
-  line-height: 1;
-}
-
-.logoName {
-  font-family: var(--font-heading);
-  font-size: var(--text-xl);
-  font-weight: 800;
-  background: var(--gradient-accent);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  letter-spacing: 0.08em;
-}
-
-.logoSub {
-  font-size: 0.6rem;
-  font-weight: 500;
-  color: var(--color-text-muted);
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
+.logoImage {
+  width: auto;
+  height: 36px;
+  display: block;
+  object-fit: contain;
 }
 
 /* ============================================================
