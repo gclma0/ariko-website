@@ -2,8 +2,8 @@ import type { Product } from "./export-products";
 
 export const IMPORT_PRODUCTS: Product[] = [
   {
-    slug: "aggregate",
-    name: "Aggregate",
+    slug: "import-aggregate",
+    name: "Aggregate / Gabbro / Limestone",
     shortDesc:
       "Crushed stone, gravel, and sand aggregate imported for Bangladesh's booming construction sector.",
     longDesc:
@@ -20,7 +20,7 @@ export const IMPORT_PRODUCTS: Product[] = [
     icon: "🪨",
   },
   {
-    slug: "coal",
+    slug: "import-coal",
     name: "Coal",
     shortDesc:
       "Thermal and coking coal imported from global sources for industrial and power generation use.",
@@ -38,8 +38,8 @@ export const IMPORT_PRODUCTS: Product[] = [
     icon: "⛏️",
   },
   {
-    slug: "auto-spare-parts",
-    name: "Auto Spare Parts",
+    slug: "import-automobile-spare-parts",
+    name: "Automobile Spare Parts",
     shortDesc:
       "Genuine HKS Japanese car accessories and auto spare parts imported since 2004.",
     longDesc:

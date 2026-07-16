@@ -45,9 +45,9 @@ export default function ImportPage() {
                 <article
                   key={product.slug}
                   className={`${styles.productCard} reveal`}
-                  style={{ transitionDelay: `${i * 0.12}s` }}
+                  style={{ transitionDelay: `${i * 0.2}s` }}
                 >
-                  <div className={styles.productImageWrap}>
+                  <div className={`${styles.productImageWrap} reveal`} style={{ transitionDelay: `${i * 0.2}s` }}>
                     <Image
                       src={product.image}
                       alt={product.name}
@@ -58,11 +58,11 @@ export default function ImportPage() {
                     <div className={styles.productImageOverlay} />
                     <span className={styles.productIcon}>{product.icon}</span>
                   </div>
-                  <div className={styles.productBody}>
+                  <div className={`${styles.productBody} reveal`} style={{ transitionDelay: `${i * 0.2 + 0.4}s` }}>
                     <h3 className={styles.productName}>{product.name}</h3>
                     <p className={styles.productDesc}>{product.shortDesc}</p>
                     <Link
-                      href={`/import/${product.slug}`}
+                      href={`/${product.slug}`}
                       className={styles.productLink}
                       id={`import-${product.slug}`}
                     >

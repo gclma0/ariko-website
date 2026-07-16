@@ -4,55 +4,76 @@ import Image from "next/image";
 import Link from "next/link";
 import PageHero from "@/components/ui/PageHero";
 import ScrollRevealWrapper from "@/components/ui/ScrollRevealWrapper";
+import { EXPORT_PRODUCTS } from "@/data/export-products";
 import { IMPORT_PRODUCTS } from "@/data/import-products";
 import { CheckCircle2, ArrowLeft, ArrowRight } from "lucide-react";
-import styles from "../../export/[slug]/page.module.css";
+import styles from "./page.module.css";
 
 interface Props {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ productSlug: string }>;
 }
 
 export async function generateStaticParams() {
-  return IMPORT_PRODUCTS.map((p) => ({ slug: p.slug }));
+  const exportSlugs = EXPORT_PRODUCTS.map((p) => ({ productSlug: p.slug }));
+  const importSlugs = IMPORT_PRODUCTS.map((p) => ({ productSlug: p.slug }));
+  return [...exportSlugs, ...importSlugs];
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { slug } = await params;
-  const product = IMPORT_PRODUCTS.find((p) => p.slug === slug);
+  const { productSlug } = await params;
+  const product =
+    EXPORT_PRODUCTS.find((p) => p.slug === productSlug) ||
+    IMPORT_PRODUCTS.find((p) => p.slug === productSlug);
+
   if (!product) return {};
-  return { title: product.name, description: product.shortDesc };
+  return {
+    title: product.name,
+    description: product.shortDesc,
+  };
 }
 
-export default async function ImportProductPage({ params }: Props) {
-  const { slug } = await params;
-  const product = IMPORT_PRODUCTS.find((p) => p.slug === slug);
+export default async function ProductFlatPage({ params }: Props) {
+  const { productSlug } = await params;
+  const product =
+    EXPORT_PRODUCTS.find((p) => p.slug === productSlug) ||
+    IMPORT_PRODUCTS.find((p) => p.slug === productSlug);
+
   if (!product) notFound();
 
-  const idx = IMPORT_PRODUCTS.indexOf(product);
-  const prev = IMPORT_PRODUCTS[idx - 1];
-  const next = IMPORT_PRODUCTS[idx + 1];
+  // Find in combined list for prev/next navigation
+  const allProducts = [...EXPORT_PRODUCTS, ...IMPORT_PRODUCTS];
+  const idx = allProducts.indexOf(product);
+  const prev = allProducts[idx - 1];
+  const next = allProducts[idx + 1];
+
+  const isExport = EXPORT_PRODUCTS.some((p) => p.slug === productSlug);
 
   return (
     <>
       <PageHero
         title={product.name}
         subtitle={product.shortDesc}
-        breadcrumb={[{ label: "Import", href: "/import" }, { label: product.name }]}
+        breadcrumb={[
+          { label: isExport ? "Export" : "Import", href: isExport ? "/export" : "/import" },
+          { label: product.name }
+        ]}
         image={product.image}
-        tag="Import Product"
+        tag={isExport ? "Export Product" : "Import Product"}
       />
 
       <ScrollRevealWrapper>
         <section className="section">
           <div className="container">
             <div className={styles.contentGrid}>
-              <div className={`${styles.mainContent} reveal`}>
+              {/* Main Content */}
+              <div className={`${styles.mainContent} reveal-left`}>
                 <div className="divider" />
                 <h2 className={styles.sectionTitle}>
                   About <span className="text-gradient">{product.name}</span>
                 </h2>
                 <p className={styles.bodyText}>{product.longDesc}</p>
-                <div className={styles.imageWrap}>
+
+                <div className={`${styles.imageWrap} reveal`} style={{ transitionDelay: "0.5s" }}>
                   <Image
                     src={product.image}
                     alt={product.name}
@@ -62,6 +83,8 @@ export default async function ImportProductPage({ params }: Props) {
                   />
                 </div>
               </div>
+
+              {/* Sidebar */}
               <aside className={`${styles.sidebar} reveal`} style={{ transitionDelay: "0.2s" }}>
                 <div className={styles.specCard}>
                   <h3 className={styles.specTitle}>Product Specifications</h3>
@@ -74,25 +97,36 @@ export default async function ImportProductPage({ params }: Props) {
                     ))}
                   </ul>
                 </div>
+
                 <div className={styles.ctaCard}>
                   <h3 className={styles.ctaTitle}>Interested in {product.name}?</h3>
-                  <p className={styles.ctaDesc}>Contact our import team for pricing, lead times, and delivery options.</p>
-                  <Link href="/contact-us" className={styles.ctaBtn} id={`import-${product.slug}-contact`}>
+                  <p className={styles.ctaDesc}>
+                    Contact our trade team for pricing, specifications, and shipping details.
+                  </p>
+                  <Link href="/contact-us" className={styles.ctaBtn} id={`flat-${product.slug}-contact`}>
                     Request a Quote <ArrowRight size={16} />
                   </Link>
                 </div>
               </aside>
             </div>
-            <nav className={styles.productNav}>
+
+            {/* Prev/Next Navigation */}
+            <nav className={styles.productNav} aria-label="Product navigation">
               {prev ? (
-                <Link href={`/import/${prev.slug}`} className={styles.navBtn}>
+                <Link href={`/${prev.slug}`} className={styles.navBtn}>
                   <ArrowLeft size={16} />
-                  <div><span className={styles.navLabel}>Previous</span><span className={styles.navName}>{prev.name}</span></div>
+                  <div>
+                    <span className={styles.navLabel}>Previous</span>
+                    <span className={styles.navName}>{prev.name}</span>
+                  </div>
                 </Link>
               ) : <div />}
               {next ? (
-                <Link href={`/import/${next.slug}`} className={`${styles.navBtn} ${styles.navBtnRight}`}>
-                  <div><span className={styles.navLabel}>Next</span><span className={styles.navName}>{next.name}</span></div>
+                <Link href={`/${next.slug}`} className={`${styles.navBtn} ${styles.navBtnRight}`}>
+                  <div>
+                    <span className={styles.navLabel}>Next</span>
+                    <span className={styles.navName}>{next.name}</span>
+                  </div>
                   <ArrowRight size={16} />
                 </Link>
               ) : <div />}

@@ -18,14 +18,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ];
 
   const exportPages: MetadataRoute.Sitemap = EXPORT_PRODUCTS.map((product) => ({
-    url: `${BASE_URL}/export/${product.slug}`,
+    url: `${BASE_URL}/${product.slug}`,
     lastModified: new Date(),
     changeFrequency: "monthly",
     priority: 0.7,
   }));
 
   const importPages: MetadataRoute.Sitemap = IMPORT_PRODUCTS.map((product) => ({
-    url: `${BASE_URL}/import/${product.slug}`,
+    url: `${BASE_URL}/${product.slug}`,
     lastModified: new Date(),
     changeFrequency: "monthly",
     priority: 0.7,

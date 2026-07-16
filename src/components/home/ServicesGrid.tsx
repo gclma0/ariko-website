@@ -23,7 +23,7 @@ const SERVICES = [
       "Authorized HKS Japan dealer for Bangladesh since 2004. We import premium auto spare parts, aggregate, and coal to meet industrial demand.",
     href: "/import",
     accentColor: "#0080ff",
-    delay: 0.1,
+    delay: 0.2,
   },
   {
     id: "ship-breaking",
@@ -34,7 +34,7 @@ const SERVICES = [
       "As the 4th largest ship scraper in Bangladesh, we dismantle vessels with strict safety and environmental protocols. Part of East Queen Group's legacy.",
     href: "/ship-breaking",
     accentColor: "#c9a84c",
-    delay: 0.2,
+    delay: 0.4,
   },
   {
     id: "solar",
@@ -45,7 +45,7 @@ const SERVICES = [
       "Expanding into renewable energy with comprehensive solar power solutions for commercial and industrial clients across Bangladesh.",
     href: "/solar-power",
     accentColor: "#00c8e8",
-    delay: 0.3,
+    delay: 0.6,
   },
 ];
 

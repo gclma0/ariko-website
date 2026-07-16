@@ -37,7 +37,7 @@
   background: var(--color-bg-card);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-2xl);
-  overflow: hidden;
+  overflow: visible;
   transition: all var(--transition-slow);
 }
 
@@ -51,6 +51,7 @@
   position: relative;
   aspect-ratio: 16/9;
   overflow: hidden;
+  border-radius: var(--radius-2xl) var(--radius-2xl) 0 0;
 }
 
 .productImage {

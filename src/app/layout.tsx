@@ -3,6 +3,7 @@ import { Inter, Outfit } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import PageTransitionWrapper from "@/components/layout/PageTransitionWrapper";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -85,7 +86,11 @@ export default function RootLayout({
     <html lang="en" className={`${inter.variable} ${outfit.variable}`} id="top">
       <body>
         <Header />
-        <main>{children}</main>
+        <main>
+          <PageTransitionWrapper>
+            {children}
+          </PageTransitionWrapper>
+        </main>
         <Footer />
       </body>
     </html>

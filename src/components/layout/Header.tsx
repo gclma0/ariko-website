@@ -15,6 +15,7 @@ export default function Header() {
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
   const dropdownRefs = useRef<Record<string, HTMLLIElement | null>>({});
+  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -102,8 +103,13 @@ export default function Header() {
                   key={item.href}
                   className={styles.navItem}
                   ref={(el) => { dropdownRefs.current[item.label] = el; }}
-                  onMouseEnter={() => item.children && setOpenDropdown(item.label)}
-                  onMouseLeave={() => setOpenDropdown(null)}
+                  onMouseEnter={() => {
+                    if (closeTimer.current) clearTimeout(closeTimer.current);
+                    if (item.children) setOpenDropdown(item.label);
+                  }}
+                  onMouseLeave={() => {
+                    closeTimer.current = setTimeout(() => setOpenDropdown(null), 200);
+                  }}
                 >
                   {item.children ? (
                     <>

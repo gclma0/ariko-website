@@ -78,7 +78,7 @@ export default function ShipBreakingPage() {
               {HIGHLIGHTS.map((item, i) => {
                 const Icon = item.icon;
                 return (
-                  <div key={i} className={`${styles.highlightCard} reveal`} style={{ transitionDelay: `${i * 0.1}s` }}>
+                  <div key={i} className={`${styles.highlightCard} reveal`} style={{ transitionDelay: `${i * 0.2}s` }}>
                     <div className={styles.highlightIcon}><Icon size={24} /></div>
                     <h3 className={styles.highlightTitle}>{item.title}</h3>
                     <p className={styles.highlightDesc}>{item.desc}</p>

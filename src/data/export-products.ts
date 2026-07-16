@@ -10,7 +10,7 @@ export interface Product {
 
 export const EXPORT_PRODUCTS: Product[] = [
   {
-    slug: "mill-scale",
+    slug: "export-mill-scale",
     name: "Mill Scale",
     shortDesc:
       "We are the 1st company in Bangladesh to start mill scale export from Bangladesh from 2005.",
@@ -28,8 +28,8 @@ export const EXPORT_PRODUCTS: Product[] = [
     icon: "⚙️",
   },
   {
-    slug: "zinc-oxide",
-    name: "Zinc Oxide",
+    slug: "export-zinc-oxide",
+    name: "Zinc Oxide / Dust",
     shortDesc:
       "High-purity zinc oxide exported globally, sourced from certified manufacturers.",
     longDesc:
@@ -46,7 +46,7 @@ export const EXPORT_PRODUCTS: Product[] = [
     icon: "🔬",
   },
   {
-    slug: "pet-flakes",
+    slug: "export-pet-flakes",
     name: "PET Flakes",
     shortDesc:
       "Recycled PET flakes from post-consumer plastic bottles, exported for sustainable manufacturing.",
@@ -64,8 +64,8 @@ export const EXPORT_PRODUCTS: Product[] = [
     icon: "♻️",
   },
   {
-    slug: "vegetables-fruits",
-    name: "Vegetables & Fruits",
+    slug: "export-fresh-vegetables-and-fruits",
+    name: "Fresh Vegetables and Fruits",
     shortDesc:
       "Fresh Bangladeshi agricultural produce exported to markets across the Middle East and Europe.",
     longDesc:
@@ -82,7 +82,7 @@ export const EXPORT_PRODUCTS: Product[] = [
     icon: "🥦",
   },
   {
-    slug: "leather-goods",
+    slug: "export-leather-goods",
     name: "Leather Goods",
     shortDesc:
       "Premium finished leather and leather goods from Bangladesh's world-renowned tanneries.",
@@ -100,8 +100,8 @@ export const EXPORT_PRODUCTS: Product[] = [
     icon: "👜",
   },
   {
-    slug: "jute-products",
-    name: "Jute Products",
+    slug: "export-jute-made-products",
+    name: "Jute and Jute-Made Products",
     shortDesc:
       "Raw jute and jute made goods — Bangladesh's golden fiber exported worldwide.",
     longDesc:

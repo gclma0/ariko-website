@@ -52,13 +52,13 @@ export default function OverviewCards() {
               title: "Export",
               body: `We export mill scale, PET flakes, raw jute, jute made goods, finished leather etc through our company Ariko International, One World Trading and Syedpur Steels Limited. We are the 1st company in Bangladesh to start mill scale export from 2005.`,
               href: "/export",
-              delay: 0.1,
+              delay: 0.2,
             },
             {
               title: "Import",
               body: `We import car/auto accessories from Japan as a dealer of all types of HKS products in Bangladesh since 2004. We import car air filters, oil filters, exhaust pipes, performance/tuning parts from HKS, Japan.`,
               href: "/import",
-              delay: 0.2,
+              delay: 0.4,
             },
           ].map((card) => (
             <div

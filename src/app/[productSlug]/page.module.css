@@ -80,7 +80,7 @@
 
 /* CTA Card */
 .ctaCard {
-  background: linear-gradient(135deg, rgba(0,200,232,0.08) 0%, rgba(0,128,255,0.06) 100%);
+  background: linear-gradient(135deg, rgba(11, 60, 93, 0.08) 0%, rgba(197, 168, 128, 0.06) 100%);
   border: 1px solid var(--color-border-accent);
   border-radius: var(--radius-2xl);
   padding: var(--space-8);
@@ -106,11 +106,12 @@
   gap: var(--space-2);
   padding: 0.75rem 1.5rem;
   background: var(--gradient-accent);
-  color: #000;
+  color: #ffffff;
   font-weight: 700;
   font-size: var(--text-sm);
   border-radius: var(--radius-full);
   transition: all var(--transition-base);
+  box-shadow: 0 4px 14px rgba(11, 60, 93, 0.15);
 }
 
 .ctaBtn:hover {
