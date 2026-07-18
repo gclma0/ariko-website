@@ -31,4 +31,4 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./out/
-          server-dir: /public_html/ # This is the folder path on your cPanel server where the files should go. Modify if it's a subdomain or different subfolder.
+          server-dir: ./ # Since the cPanel FTP user is already locked to the public_html directory
