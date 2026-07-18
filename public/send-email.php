@@ -1,5 +1,9 @@
 <?php
-// Enable CORS so the React app can submit to it from any domain or localhost
+// Enable error reporting for debugging
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Headers: Content-Type");
 header("Content-Type: application/json");
@@ -21,7 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         exit;
     }
 
-    // Set receiver email (tasfik06@gmail.com for now)
+    // Set receiver email
     $to = "tasfik06@gmail.com"; 
     $email_subject = "Ariko Website Inquiry: " . $subject;
     
@@ -36,12 +40,25 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $email_headers .= "Reply-To: $email\r\n";
 
     // Send the email
-    if (mail($to, $email_subject, $email_content, $email_headers)) {
-        http_response_code(200);
-        echo json_encode(["success" => "Message sent successfully."]);
-    } else {
+    try {
+        if (mail($to, $email_subject, $email_content, $email_headers)) {
+            http_response_code(200);
+            echo json_encode(["success" => "Message sent successfully."]);
+        } else {
+            // Check if there is a PHP error
+            $last_error = error_get_last();
+            http_response_code(500);
+            echo json_encode([
+                "error" => "PHP mail() function returned false. The mail server might be disabled or misconfigured.",
+                "details" => $last_error
+            ]);
+        }
+    } catch (Exception $e) {
         http_response_code(500);
-        echo json_encode(["error" => "Oops! Something went wrong and we couldn't send your message."]);
+        echo json_encode([
+            "error" => "An exception occurred while trying to send email.",
+            "details" => $e->getMessage()
+        ]);
     }
 } else {
     http_response_code(403);
