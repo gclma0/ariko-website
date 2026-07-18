@@ -4,7 +4,7 @@ export const COMPANY = {
   description:
     "ARIKO International is a sister concern of East Queen Group, one of Bangladesh's oldest and most respected industrial conglomerates, established in 1968.",
   phone: "+880 1713-042261",
-  email: "info@scrapbangla.com",
+  email: "shahrear@scrapbangla.com",
   webmail: "https://mail.scrapbangla.com",
   founded: 1968,
   socialMedia: {
@@ -27,7 +27,7 @@ export const COMPANY = {
       address: "Sunshine Building -2, M-Floor M05 M06, Omar Bin Al Khattab Road Fish Roundabout, Naif, Deira Dubai-U.A.E.",
       contactPerson: "Shahrear Morshed",
       phone: "+971528669813",
-      email: "info@scrapbangla.com",
+      email: "shahrear@scrapbangla.com",
       skype: "SHAHREAR.S",
       altEmail: "shaikat_ctg@hotmail.com",
     },

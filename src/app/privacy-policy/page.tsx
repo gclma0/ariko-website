@@ -72,7 +72,7 @@ export default function PrivacyPolicyPage() {
 
             <div className={styles.block}>
               <h2 className={styles.h2}>7. Your Rights</h2>
-              <p>Depending on your jurisdiction, you may have the right to access, correct, or delete personal information we hold about you. To exercise these rights, please contact us at <a href="mailto:info@scrapbangla.com" className={styles.link}>info@scrapbangla.com</a>.</p>
+              <p>Depending on your jurisdiction, you may have the right to access, correct, or delete personal information we hold about you. To exercise these rights, please contact us at <a href="mailto:shahrear@scrapbangla.com" className={styles.link}>shahrear@scrapbangla.com</a>.</p>
             </div>
 
             <div className={styles.block}>
@@ -86,7 +86,7 @@ export default function PrivacyPolicyPage() {
               <div className={styles.contactBlock}>
                 <strong>ARIKO International</strong><br />
                 East Queen Group, Dhaka, Bangladesh<br />
-                Email: <a href="mailto:info@scrapbangla.com" className={styles.link}>info@scrapbangla.com</a><br />
+                Email: <a href="mailto:shahrear@scrapbangla.com" className={styles.link}>shahrear@scrapbangla.com</a><br />
                 Phone: <a href="tel:+8801713042261" className={styles.link}>+880 1713-042261</a>
               </div>
             </div>

@@ -81,7 +81,7 @@ export default function TermsPage() {
               <div className={styles.contactBlock}>
                 <strong>ARIKO International</strong><br />
                 East Queen Group, Dhaka, Bangladesh<br />
-                Email: <a href="mailto:info@scrapbangla.com" className={styles.link}>info@scrapbangla.com</a><br />
+                Email: <a href="mailto:shahrear@scrapbangla.com" className={styles.link}>shahrear@scrapbangla.com</a><br />
                 Phone: <a href="tel:+8801713042261" className={styles.link}>+880 1713-042261</a>
               </div>
             </div>
