@@ -18,7 +18,7 @@ export default function ContactForm() {
     e.preventDefault();
     setStatus("loading");
     try {
-      const res = await fetch("https://formspree.io/f/xkgjwqrz", {
+      const res = await fetch("/send-email.php", {
         method: "POST",
         headers: { "Content-Type": "application/json", Accept: "application/json" },
         body: JSON.stringify(formState),
