@@ -18,10 +18,13 @@ export default function ContactForm() {
     e.preventDefault();
     setStatus("loading");
     try {
-      const res = await fetch("/send-email.php", {
+      const res = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
         headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify(formState),
+        body: JSON.stringify({
+          access_key: "6aa2237b-7a3f-4c53-91c2-8213208f18c6",
+          ...formState,
+        }),
       });
       if (res.ok) {
         setStatus("success");
