@@ -1,0 +1,13 @@
+# Enable rewriting engine
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+
+    # Allow access to Next.js static metadata files starting with double underscores
+    RewriteCond %{REQUEST_URI} ^/__next [OR]
+    RewriteCond %{REQUEST_URI} /__next
+    RewriteRule ^ - [L]
+</IfModule>
+
+# Prevent directory listings
+Options -Indexes
