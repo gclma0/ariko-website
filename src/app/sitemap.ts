@@ -4,6 +4,8 @@ import { IMPORT_PRODUCTS } from "@/data/import-products";
 
 const BASE_URL = "https://scrapbangla.com";
 
+export const dynamic = "force-static";
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticPages: MetadataRoute.Sitemap = [
     { url: BASE_URL, lastModified: new Date(), changeFrequency: "weekly", priority: 1 },
