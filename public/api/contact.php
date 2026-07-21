@@ -86,6 +86,17 @@ if (empty($smtp_password)) {
     exit;
 }
 
+// Retrieve Recipient Email (falls back to s4iif.4hm3d@gmail.com)
+$recipient_email = getenv('RECIPIENT_EMAIL');
+if (empty($recipient_email)) {
+    if (defined('RECIPIENT_EMAIL')) {
+        $recipient_email = RECIPIENT_EMAIL;
+    } else {
+        $recipient_email = 's4iif.4hm3d@gmail.com';
+    }
+}
+
+
 // 5. Load PHPMailer classes
 require_once __DIR__ . '/lib/PHPMailer/Exception.php';
 require_once __DIR__ . '/lib/PHPMailer/PHPMailer.php';
@@ -109,7 +120,7 @@ try {
 
     // Recipients
     $mail->setFrom('no-reply@scrapbangla.com', 'ARIKO Website');
-    $mail->addAddress('shahrear@scrapbangla.com');
+    $mail->addAddress($recipient_email);
     $mail->addReplyTo($email, $name);
 
     // Email Body Construction
