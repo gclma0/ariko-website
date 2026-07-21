@@ -8,6 +8,8 @@ export default function ContactForm() {
   const [formState, setFormState] = useState({
     name: "", email: "", phone: "", subject: "", message: "",
   });
+  const [website, setWebsite] = useState("");
+  const [loadTime] = useState(() => Math.floor(Date.now() / 1000));
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -18,17 +20,24 @@ export default function ContactForm() {
     e.preventDefault();
     setStatus("loading");
     try {
-      const res = await fetch("https://api.web3forms.com/submit", {
+      const res = await fetch("/api/contact.php", {
         method: "POST",
         headers: { "Content-Type": "application/json", Accept: "application/json" },
         body: JSON.stringify({
-          access_key: "6aa2237b-7a3f-4c53-91c2-8213208f18c6",
           ...formState,
+          website,
+          ts: loadTime,
         }),
       });
       if (res.ok) {
-        setStatus("success");
-        setFormState({ name: "", email: "", phone: "", subject: "", message: "" });
+        const data = await res.json();
+        if (data.status === "success") {
+          setStatus("success");
+          setFormState({ name: "", email: "", phone: "", subject: "", message: "" });
+          setWebsite("");
+        } else {
+          setStatus("error");
+        }
       } else {
         setStatus("error");
       }
@@ -52,6 +61,20 @@ export default function ContactForm() {
 
   return (
     <form className={styles.form} onSubmit={handleSubmit} id="contact-form">
+      {/* Honeypot field (hidden from humans, visible to basic bots) */}
+      <div style={{ position: "absolute", left: "-9999px", height: "1px", width: "1px", overflow: "hidden" }} aria-hidden="true">
+        <label htmlFor="contact-website">Leave this field blank</label>
+        <input
+          id="contact-website"
+          type="text"
+          name="website"
+          value={website}
+          onChange={(e) => setWebsite(e.target.value)}
+          tabIndex={-1}
+          autoComplete="off"
+        />
+      </div>
+
       <div className={styles.row}>
         <div className={styles.fieldGroup}>
           <label htmlFor="contact-name" className={styles.label}>Full Name *</label>
