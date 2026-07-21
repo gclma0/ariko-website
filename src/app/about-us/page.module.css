@@ -131,6 +131,33 @@
   padding-top: var(--space-4);
 }
 
+.concernsContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-8);
+  margin-top: var(--space-8);
+}
+
+@media (max-width: 992px) {
+  .concernsContainer {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+}
+
+.concernsColumn {
+  display: flex;
+  flex-direction: column;
+}
+
+.columnTitle {
+  font-size: var(--text-base);
+  font-weight: 700;
+  color: var(--color-white);
+  margin-bottom: var(--space-4);
+  letter-spacing: -0.01em;
+}
+
 .concernsList {
   display: flex;
   flex-direction: column;
@@ -138,7 +165,17 @@
   border: 1px solid var(--color-border);
   border-radius: var(--radius-2xl);
   overflow: hidden;
-  margin-top: var(--space-8);
+}
+
+.concernLink {
+  font-size: var(--text-xs);
+  color: #c5a880;
+  text-decoration: underline;
+  transition: opacity var(--transition-fast);
+}
+
+.concernLink:hover {
+  opacity: 0.8;
 }
 
 .concernItem {

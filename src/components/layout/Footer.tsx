@@ -2,24 +2,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { Mail, Phone, MapPin, ArrowUpCircle } from "lucide-react";
 
-const FacebookIcon = () => (
-  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
-  </svg>
-);
-const TwitterIcon = () => (
-  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-    <path d="M4 4l16 16M4 20L20 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" fill="none"/>
-    <path d="M3 5h4.5L21 19h-4.5z" fill="currentColor"/>
-  </svg>
-);
-const LinkedinIcon = () => (
-  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
-    <rect x="2" y="9" width="4" height="12"/>
-    <circle cx="4" cy="4" r="2"/>
-  </svg>
-);
 import { COMPANY } from "@/data/company";
 import NewsletterForm from "./NewsletterForm";
 import { NAV_ITEMS } from "@/data/navigation";
@@ -55,31 +37,26 @@ export default function Footer() {
           </p>
 
           <div className={styles.contactList}>
-            <a href={`tel:${COMPANY.phone}`} className={styles.contactItem}>
-              <Phone size={14} />
-              <span>{COMPANY.phone}</span>
+            <div className={styles.contactPerson}>
+              <strong>{COMPANY.managingDirector.name}</strong>
+              <span className={styles.contactPersonSub}> – {COMPANY.managingDirector.role}</span>
+            </div>
+            <a href={`tel:${COMPANY.managingDirector.phone}`} className={styles.contactItem}>
+              <Phone size={13} />
+              <span>{COMPANY.managingDirector.phone}</span>
             </a>
-            <a href={`mailto:${COMPANY.email}`} className={styles.contactItem}>
-              <Mail size={14} />
-              <span>{COMPANY.email}</span>
-            </a>
+            {COMPANY.managingDirector.emails.map((email) => (
+              <a key={email} href={`mailto:${email}`} className={styles.contactItem}>
+                <Mail size={13} />
+                <span>{email}</span>
+              </a>
+            ))}
             <div className={styles.contactItem}>
-              <MapPin size={14} />
-              <span>Dhaka, Bangladesh</span>
+              <MapPin size={13} />
+              <span>Dhaka • Chattogram • Dubai</span>
             </div>
           </div>
 
-          <div className={styles.socialLinks}>
-            <a href={COMPANY.socialMedia.facebook} aria-label="Facebook" className={styles.socialLink} target="_blank" rel="noopener noreferrer">
-              <FacebookIcon />
-            </a>
-            <a href={COMPANY.socialMedia.twitter} aria-label="Twitter" className={styles.socialLink} target="_blank" rel="noopener noreferrer">
-              <TwitterIcon />
-            </a>
-            <a href={COMPANY.socialMedia.linkedin} aria-label="LinkedIn" className={styles.socialLink} target="_blank" rel="noopener noreferrer">
-              <LinkedinIcon />
-            </a>
-          </div>
         </div>
 
         {/* Export Column */}

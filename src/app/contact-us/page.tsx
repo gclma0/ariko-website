@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Phone, Mail, MapPin, Clock } from "lucide-react";
+import { Phone, Mail, MapPin, Clock, Globe } from "lucide-react";
 import PageHero from "@/components/ui/PageHero";
 import ScrollRevealWrapper from "@/components/ui/ScrollRevealWrapper";
 import { COMPANY } from "@/data/company";
@@ -45,19 +45,34 @@ export default function ContactPage() {
               <aside className={`${styles.sidebar} reveal-right`} style={{ transitionDelay: "0.25s" }}>
                 <div className={styles.infoCard}>
                   <h3 className={styles.infoTitle}>Direct Contact</h3>
+                  <div className={styles.contactPersonHeader}>
+                    <strong>{COMPANY.managingDirector.name}</strong>
+                    <span className={styles.contactPersonSub}>{COMPANY.managingDirector.role}</span>
+                  </div>
                   <ul className={styles.infoList}>
                     <li className={styles.infoItem}>
                       <div className={styles.infoIcon}><Phone size={18} /></div>
                       <div>
                         <span className={styles.infoLabel}>Phone</span>
-                        <a href={`tel:${COMPANY.phone}`} className={styles.infoValue}>{COMPANY.phone}</a>
+                        <a href={`tel:${COMPANY.managingDirector.phone}`} className={styles.infoValue}>{COMPANY.managingDirector.phone}</a>
                       </div>
                     </li>
                     <li className={styles.infoItem}>
                       <div className={styles.infoIcon}><Mail size={18} /></div>
                       <div>
                         <span className={styles.infoLabel}>Email</span>
-                        <a href={`mailto:${COMPANY.email}`} className={styles.infoValue}>{COMPANY.email}</a>
+                        {COMPANY.managingDirector.emails.map((email) => (
+                          <a key={email} href={`mailto:${email}`} className={styles.infoValue} style={{ display: 'block' }}>{email}</a>
+                        ))}
+                      </div>
+                    </li>
+                    <li className={styles.infoItem}>
+                      <div className={styles.infoIcon}><Globe size={18} /></div>
+                      <div>
+                        <span className={styles.infoLabel}>Website</span>
+                        {COMPANY.managingDirector.websites.map((web) => (
+                          <a key={web} href={`https://${web}`} target="_blank" rel="noopener noreferrer" className={styles.infoValue} style={{ display: 'block' }}>{web}</a>
+                        ))}
                       </div>
                     </li>
                     <li className={styles.infoItem}>
@@ -104,10 +119,12 @@ export default function ContactPage() {
                           <a href={`mailto:${office.altEmail}`} className={styles.detailValue}>{office.altEmail}</a>
                         </div>
                       )}
-                      <div className={styles.officeDetailRow}>
-                        <span className={styles.detailLabel}>Phone:</span>
-                        <span className={styles.detailValue}>{office.phone}</span>
-                      </div>
+                      {office.phone && (
+                        <div className={styles.officeDetailRow}>
+                          <span className={styles.detailLabel}>Phone:</span>
+                          <span className={styles.detailValue}>{office.phone}</span>
+                        </div>
+                      )}
                       {office.fax && (
                         <div className={styles.officeDetailRow}>
                           <span className={styles.detailLabel}>Fax:</span>

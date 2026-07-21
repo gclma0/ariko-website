@@ -78,13 +78,35 @@ export default function AboutPage() {
                 Established in the year 1968, the group has gone through many successes continuously. Concerns of the groups are:
               </p>
 
-              <div className={styles.concernsList}>
-                {COMPANY.sisterConcerns.map((concern) => (
-                  <div key={concern.num} className={styles.concernItem}>
-                    <span className={styles.concernNum}>{concern.num}</span>
-                    <p className={styles.concernName}>{concern.name}</p>
+              <div className={styles.concernsContainer}>
+                <div className={styles.concernsColumn}>
+                  <h3 className={styles.columnTitle}>Our Group Companies</h3>
+                  <div className={styles.concernsList}>
+                    {COMPANY.groupCompanies.map((company, i) => (
+                      <div key={i} className={styles.concernItem}>
+                        <span className={styles.concernNum}>{String(i + 1).padStart(2, '0')}</span>
+                        <p className={styles.concernName}>{company}</p>
+                      </div>
+                    ))}
                   </div>
-                ))}
+                </div>
+
+                <div className={styles.concernsColumn}>
+                  <h3 className={styles.columnTitle}>Business Associate Companies</h3>
+                  <div className={styles.concernsList}>
+                    {COMPANY.associateCompanies.map((company, i) => (
+                      <div key={i} className={styles.concernItem}>
+                        <span className={styles.concernNum}>{String(i + 1).padStart(2, '0')}</span>
+                        <div>
+                          <p className={styles.concernName}>{company.name}</p>
+                          <a href={company.url} target="_blank" rel="noopener noreferrer" className={styles.concernLink}>
+                            {company.url.replace(/^https?:\/\/(www\.)?/, '')}
+                          </a>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
               </div>
             </div>
 

@@ -1,4 +1,42 @@
-export const COMPANY = {
+export interface Office {
+  id: string;
+  label: string;
+  address: string;
+  phone?: string;
+  fax?: string;
+  email: string;
+  contactPerson?: string;
+  altEmail?: string;
+  skype?: string;
+}
+
+export const COMPANY: {
+  name: string;
+  tagline: string;
+  description: string;
+  phone: string;
+  email: string;
+  webmail: string;
+  founded: number;
+  socialMedia: { facebook: string; twitter: string; linkedin: string };
+  managingDirector: {
+    name: string;
+    role: string;
+    phone: string;
+    emails: string[];
+    websites: string[];
+  };
+  offices: Office[];
+  stats: { value: number; suffix?: string; label: string; prefix?: string }[];
+  welcomeText: string;
+  welcomeText2: string;
+  mission: string;
+  vision: string;
+  spirit: string;
+  groupCompanies: string[];
+  associateCompanies: { name: string; url: string }[];
+  groupHistory: string;
+} = {
   name: "ARIKO International",
   tagline: "Exporters of Mill Scale & Importers of Heavy Melting Scrap",
   description:
@@ -12,39 +50,34 @@ export const COMPANY = {
     twitter: "https://twitter.com",
     linkedin: "https://linkedin.com",
   },
+  managingDirector: {
+    name: "Shahrear Morshed",
+    role: "Managing Director",
+    phone: "+880 1713-042261",
+    emails: ["shahrear@scrapbangla.com", "shahrear@eastqueengroup.com"],
+    websites: ["www.scrapbangla.com", "www.eastqueengroup.com"],
+  },
   offices: [
-    {
-      id: "corporate",
-      label: "Corporate Office",
-      address: "House 146, Road 1/1, CDA R/A, Agrabad, Chattogram-4100, Bangladesh.",
-      phone: "+88031 720109, 723624",
-      fax: "+88031 2523159",
-      email: "corporate@scrapbangla.com",
-    },
-    {
-      id: "dubai",
-      label: "Dubai Office",
-      address: "Sunshine Building -2, M-Floor M05 M06, Omar Bin Al Khattab Road Fish Roundabout, Naif, Deira Dubai-U.A.E.",
-      contactPerson: "Shahrear Morshed",
-      phone: "+971528669813",
-      email: "shahrear@scrapbangla.com",
-      skype: "SHAHREAR.S",
-      altEmail: "shaikat_ctg@hotmail.com",
-    },
     {
       id: "chattogram",
       label: "Chattogram Office",
-      address: "House 146, Road 1/1, CDA R/A, Agrabad, Chattogram-4100, Bangladesh.",
-      phone: "+880 31 252 1504, 2521564",
-      fax: "+880 31 252 1564",
-      email: "chittagong@scrapbangla.com",
+      address: "House 146, Road 1/1, CDA R/A Agrabad, Chattogram-4100, Bangladesh.",
+      phone: "+880 31 2521504",
+      fax: "+880 31 2521564",
+      email: "shahrear@scrapbangla.com",
     },
     {
       id: "dhaka",
       label: "Dhaka Office",
       address: "House # 19, Road # 55, Gulshan-2, Dhaka-1212, Bangladesh.",
-      phone: "+880 2 8418050",
-      fax: "+880 31 252 1564",
+      phone: "+880-02-9840654, 88-02-9840817, +88-02-8824204, 88-02-8829335",
+      fax: "+88-02-8821042, 88-02-9861809",
+      email: "shahrear@scrapbangla.com",
+    },
+    {
+      id: "dubai",
+      label: "Dubai Office",
+      address: "Sunshine Building 2, M-Floor M05 M06, Omar Bin Al Khattab Road, Fish Roundabout, Naif, Deira Dubai-U.A.E.",
       email: "shahrear@scrapbangla.com",
     },
   ],
@@ -59,16 +92,19 @@ export const COMPANY = {
   mission: `To become one of the best and successful exporting, importing and indenting company of the country with continuous good business track record.`,
   vision: `To lead Bangladesh's industrial transformation by delivering excellence, fostering innovation, and building global partnerships that create value for generations.`,
   spirit: `Enterprise is our spirit.`,
-  sisterConcerns: [
-    { num: "01", name: "M A TAHER & CO. (CIVIL CONSTRUCTION CO.) ESTABLISHED ON 1968 REGISTERED IN SINGAPORE" },
-    { num: "02", name: "EAST QUEEN SHIPPING LIMITED (4TH LARGEST SHIP SCRAPERS) ESTABLISHED ON 1984" },
-    { num: "03", name: "SYEDPUR STEELS LIMITED (SHIP SCRAPER & STEELS TRADER) ESTABLISHED ON 1994" },
-    { num: "04", name: "ONE WORLD TRADING (PLASTIC SCRAP EXPORTER, HKS DEALER IN BANGLADESH SINCE 2004) ESTABLISHED 2002" },
-    { num: "05", name: "ARIKO INTERNATIONAL (MILL SCALE EXPORTER)" },
-    { num: "06", name: "ALLIED MARITIME SERVICES (C&F, FREIGHT FORWARDER, SURVEYOR) ESTABLISHED ON 1996" },
-    { num: "07", name: "ADNAN PSF INDUSTRIES LIMITED (LARGEST PET FLAKES MANUFACTURER AND EXPORTER FROM BANGLADESH)" },
-    { num: "08", name: "BANGLADESH STAR CONTAINERS LIMITED (INLAND CONTAINER DEPOT-ICD)" },
-    { num: "09", name: "SYEDPUR FISHERIES & FARM (LARGEST FISHERIES AND AGRICULTURAL PROJECT IN CHITTAGONG) ESTABLISHED IN 2007" },
+  groupCompanies: [
+    "ARIKO International",
+    "East Queen Shipping Limited",
+    "Bay Gas Limited",
+    "Syedpur Fisheries and Farms",
+    "Bangladesh Star Containers Limited",
+  ],
+  associateCompanies: [
+    { name: "Adnan PSF Industries Limited", url: "http://www.adnanpsf.com" },
+    { name: "Icon Fashion", url: "http://www.iconshopbd.com" },
+    { name: "Alliance Leather Goods and Footwear Limited", url: "http://www.alliancefootwearbd.com" },
+    { name: "Eco Trade International", url: "http://www.ecotradebd.com" },
+    { name: "Bhuiyan Enterprise", url: "http://www.bhuiyanenterprize.com" },
   ],
   groupHistory: `ARIKO International is a sister concern of EAST QUEEN GROUP, which is one of the oldest groups of Bangladesh and the 4th largest and oldest ship scrapers of the country. Established in the year 1968, the group has gone through many successes continuously. Our mission is to deliver excellence with integrity and mutual business benefits to all stakeholders across the globe.`,
 };

@@ -70,6 +70,17 @@
   margin-bottom: var(--space-6);
 }
 
+.contactPerson {
+  font-size: var(--text-sm);
+  color: var(--color-white);
+  margin-bottom: 2px;
+}
+
+.contactPersonSub {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+}
+
 .contactItem {
   display: flex;
   align-items: center;
