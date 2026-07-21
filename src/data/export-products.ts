@@ -5,6 +5,7 @@ export interface Product {
   longDesc: string;
   details: string[];
   image: string;
+  heroImage?: string;
   icon: string;
 }
 
@@ -24,7 +25,8 @@ export const EXPORT_PRODUCTS: Product[] = [
       "Certificate of Origin provided",
       "Quality inspection available",
     ],
-    image: "/hero-millscale.jpg",
+    heroImage: "/products/mill-scale-hero.jpg",
+    image: "/products/mill-scale-body.jpg",
     icon: "⚙️",
   },
   {
@@ -42,7 +44,8 @@ export const EXPORT_PRODUCTS: Product[] = [
       "SGS inspection available",
       "REACH compliant",
     ],
-    image: "/about-factory.jpg",
+    heroImage: "/products/zinc-hero.jpg",
+    image: "/products/zinc-body.jpg",
     icon: "🔬",
   },
   {
@@ -60,7 +63,8 @@ export const EXPORT_PRODUCTS: Product[] = [
       "Available in 1 MT big bags",
       "Consistent monthly supply",
     ],
-    image: "/hero-port.jpg",
+    heroImage: "/products/pet-flakes-hero.jpg",
+    image: "/products/pet-flakes-body.jpg",
     icon: "♻️",
   },
   {
@@ -78,7 +82,8 @@ export const EXPORT_PRODUCTS: Product[] = [
       "Year-round availability",
       "Custom packaging available",
     ],
-    image: "/hero-solar.jpg",
+    heroImage: "/products/fresh-vegetables-hero.png",
+    image: "/products/fresh-vegetables-body.png",
     icon: "🥦",
   },
   {
@@ -96,7 +101,8 @@ export const EXPORT_PRODUCTS: Product[] = [
       "MOQ: 1,000 sq ft",
       "Monthly capacity: 100,000+ sq ft",
     ],
-    image: "/about-factory.jpg",
+    heroImage: "/products/leather-goods-hero.png",
+    image: "/products/leather-goods-body.png",
     icon: "👜",
   },
   {
@@ -114,7 +120,8 @@ export const EXPORT_PRODUCTS: Product[] = [
       "Monthly capacity: 500 MT",
       "Customizable packaging & branding",
     ],
-    image: "/hero-port.jpg",
+    heroImage: "/products/jute-hero.jpg",
+    image: "/products/jute-body.jpg",
     icon: "🌿",
   },
 ];

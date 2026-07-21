@@ -26,7 +26,7 @@ export default function ShipBreakingPage() {
         title="Ship Breaking Division"
         subtitle="Bangladesh's 4th largest ship scrapping operation — established 1981. Safety, integrity, and environmental responsibility."
         breadcrumb={[{ label: "Ship Breaking" }]}
-        image="/hero-shipbreaking.jpg"
+        image="/products/ship-breaking-hero.jpg"
         tag="Est. 1981"
       />
 
@@ -58,7 +58,7 @@ export default function ShipBreakingPage() {
 
               <div className={`${styles.imageWrap} reveal-right`}>
                 <Image
-                  src="/hero-shipbreaking.jpg"
+                  src="/products/ship-breaking-body.jpg"
                   alt="ARIKO International ship breaking yard"
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"

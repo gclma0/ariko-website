@@ -57,7 +57,7 @@ export default async function ProductFlatPage({ params }: Props) {
           { label: isExport ? "Export" : "Import", href: isExport ? "/export" : "/import" },
           { label: product.name }
         ]}
-        image={product.image}
+        image={product.heroImage || product.image}
         tag={isExport ? "Export Product" : "Import Product"}
       />
 

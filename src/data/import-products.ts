@@ -16,7 +16,8 @@ export const IMPORT_PRODUCTS: Product[] = [
       "Delivery: Chattogram & Mongla Port",
       "Test certificates available",
     ],
-    image: "/hero-port.jpg",
+    heroImage: "/products/aggregate-hero.jpg",
+    image: "/products/aggregate-body.jpg",
     icon: "🪨",
   },
   {
@@ -34,7 +35,8 @@ export const IMPORT_PRODUCTS: Product[] = [
       "Capacity: 10,000-50,000 MT per shipment",
       "ASTM/ISO analysis reports",
     ],
-    image: "/about-factory.jpg",
+    heroImage: "/products/coal-hero.png",
+    image: "/products/coal-body.png",
     icon: "⛏️",
   },
   {

@@ -24,9 +24,9 @@
   inset: 0;
   background: linear-gradient(
     180deg,
-    rgba(15, 23, 42, 0.75) 0%,
-    rgba(15, 23, 42, 0.88) 60%,
-    rgba(15, 23, 42, 0.98) 100%
+    rgba(15, 23, 42, 0.35) 0%,
+    rgba(15, 23, 42, 0.55) 50%,
+    rgba(15, 23, 42, 0.82) 100%
   );
 }
 
@@ -116,6 +116,7 @@
   color: #ffffff !important;
   line-height: 1.1;
   max-width: 800px;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
   animation: fadeInUp 1.8s 1.2s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
@@ -123,9 +124,10 @@
 .subtitle {
   margin-top: var(--space-4);
   font-size: var(--text-lg);
-  color: rgba(255, 255, 255, 0.82) !important;
+  color: rgba(255, 255, 255, 0.92) !important;
   max-width: 600px;
   line-height: 1.7;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
   animation: fadeInUp 1.8s 1.6s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
