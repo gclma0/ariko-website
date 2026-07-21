@@ -86,13 +86,13 @@ if (empty($smtp_password)) {
     exit;
 }
 
-// Retrieve Recipient Email (falls back to s4iif.4hm3d@gmail.com)
+// Retrieve Recipient Email (falls back to shahrear@scrapbangla.com)
 $recipient_email = getenv('RECIPIENT_EMAIL');
 if (empty($recipient_email)) {
     if (defined('RECIPIENT_EMAIL')) {
         $recipient_email = RECIPIENT_EMAIL;
     } else {
-        $recipient_email = 's4iif.4hm3d@gmail.com';
+        $recipient_email = 'shahrear@scrapbangla.com';
     }
 }
 
