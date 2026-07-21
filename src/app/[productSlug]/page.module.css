@@ -194,4 +194,13 @@
   .productNav {
     flex-direction: column;
   }
+
+  .sidebar {
+    flex-direction: column;
+  }
+
+  .specCard,
+  .ctaCard {
+    width: 100%;
+  }
 }

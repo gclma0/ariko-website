@@ -70,14 +70,24 @@
   .statItem:nth-child(2)::after {
     display: none;
   }
-
-  .statItem::after {
-    right: 0;
-  }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 576px) {
   .statsGrid {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+  }
+
+  .statItem::after {
+    display: none;
+  }
+
+  .statItem {
+    padding: var(--space-4) var(--space-6);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .statItem:last-child {
+    border-bottom: none;
   }
 }

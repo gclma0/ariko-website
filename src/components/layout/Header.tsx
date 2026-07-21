@@ -253,7 +253,7 @@ export default function Header() {
       </div>
 
       {/* Spacer */}
-      <div style={{ height: "var(--header-height)", marginTop: "2.25rem" }} />
+      <div className={styles.headerSpacer} />
     </>
   );
 }
