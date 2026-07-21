@@ -1,11 +1,3 @@
-Title: Live Content
-
-Description: Fetched live
-
-Source: https://raw.githubusercontent.com/PHPMailer/PHPMailer/master/src/Exception.php
-
----
-
 <?php
 
 /**
@@ -22,5 +14,27 @@ Source: https://raw.githubusercontent.com/PHPMailer/PHPMailer/master/src/Excepti
  * @copyright 2010 - 2012 Jim Jagielski
  * @copyright 2004 - 2009 Andy Prevost
  * @license   https://www.gnu.org/licenses/old-licenses/lgpl-2.1.html GNU Lesser General Public License
- * @note      This program is distributed in the hope tha
+ * @note      This program is distributed in the hope that it will be useful - WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+ * FITNESS FOR A PARTICULAR PURPOSE.
+ */
 
+namespace PHPMailer\PHPMailer;
+
+/**
+ * PHPMailer exception handler.
+ *
+ * @author Marcus Bointon <phpmailer@synchromedia.co.uk>
+ */
+class Exception extends \Exception
+{
+    /**
+     * Prettify error message output.
+     *
+     * @return string
+     */
+    public function errorMessage()
+    {
+        return '<strong>' . htmlspecialchars($this->getMessage(), ENT_COMPAT | ENT_HTML401) . "</strong><br />\n";
+    }
+}
