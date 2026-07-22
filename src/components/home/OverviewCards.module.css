@@ -197,5 +197,23 @@
 @media (max-width: 640px) {
   .cardsGrid {
     grid-template-columns: 1fr;
+    gap: var(--space-8);
+  }
+
+  .card {
+    padding: var(--space-10) var(--space-8);
+  }
+
+  .cardBody {
+    line-height: 1.95;
+    font-size: var(--text-sm);
+  }
+
+  .introDesc {
+    line-height: 1.9;
+  }
+
+  .introWrap {
+    margin-bottom: var(--space-16);
   }
 }

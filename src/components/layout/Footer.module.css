@@ -298,6 +298,34 @@
   transform: translateY(-3px);
 }
 
+.accordionHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: default;
+}
+
+.accordionChevron {
+  display: none;
+}
+
+.accordionContent {
+  display: block;
+}
+
+.accordionGroup {
+  margin-top: 0;
+}
+
+.companyGroup {
+  margin-top: 2rem;
+}
+
 /* Responsive */
 @media (max-width: 1024px) {
   .footerGrid {
@@ -307,14 +335,105 @@
 }
 
 @media (max-width: 640px) {
+  .footer {
+    margin-top: var(--space-32);
+  }
+
   .footerGrid {
     grid-template-columns: 1fr;
-    gap: var(--space-8);
+    gap: var(--space-10);
+    padding: var(--space-16) var(--space-5);
   }
 
   .bottomBarInner {
     flex-direction: column;
     align-items: center;
     text-align: center;
+    gap: var(--space-6);
+    padding: 0 var(--space-5);
+  }
+
+  .linkList {
+    gap: 0;
+  }
+
+  .bottomLinks {
+    gap: var(--space-5);
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .brandDesc {
+    line-height: 1.9;
+  }
+
+  .contactList {
+    gap: var(--space-4);
+  }
+
+  .newsletterDesc {
+    line-height: 1.8;
+    margin-bottom: var(--space-6);
+  }
+
+  /* Accordion styles */
+  .accordionHeader {
+    cursor: pointer;
+    padding: var(--space-4) var(--space-2);
+    border-bottom: 1px solid var(--color-border);
+    margin-bottom: var(--space-2);
+  }
+
+  .accordionChevron {
+    display: block;
+    transition: transform var(--transition-base);
+    color: var(--color-accent);
+  }
+
+  .chevronRotated {
+    transform: rotate(180deg);
+  }
+
+  .accordionContent {
+    max-height: 0;
+    opacity: 0;
+    visibility: hidden;
+    overflow: hidden;
+    transition: max-height var(--transition-slow), opacity var(--transition-slow), visibility var(--transition-slow);
+  }
+
+  .accordionContentOpen {
+    max-height: 500px;
+    opacity: 1;
+    visibility: visible;
+    margin-top: var(--space-2);
+    margin-bottom: var(--space-6);
+  }
+
+  .companyGroup {
+    margin-top: var(--space-6);
+  }
+
+  /* Touch targets minimum 44px */
+  .footerLink {
+    padding: 12px var(--space-4);
+    width: 100%;
+    min-height: 44px;
+    box-sizing: border-box;
+  }
+
+  /* Newsletter full-width */
+  .newsletterInput {
+    padding: 14px 16px;
+    font-size: var(--text-base);
+    box-sizing: border-box;
+    width: 100%;
+  }
+
+  .newsletterBtn {
+    padding: 14px 20px;
+    font-size: var(--text-base);
+    box-sizing: border-box;
+    width: 100%;
   }
 }

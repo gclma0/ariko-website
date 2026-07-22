@@ -482,7 +482,7 @@
   }
 
   .desktopNav,
-  .headerCta {
+  .ctaBtn {
     display: none;
   }
 
@@ -492,5 +492,11 @@
 
   .headerSpacer {
     margin-top: 0;
+  }
+}
+
+@media (max-width: 380px) {
+  .logoImage {
+    height: 28px;
   }
 }

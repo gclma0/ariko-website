@@ -1,6 +1,9 @@
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Mail, Phone, MapPin, ArrowUpCircle } from "lucide-react";
+import { Mail, Phone, MapPin, ArrowUpCircle, ChevronDown } from "lucide-react";
 
 import { COMPANY } from "@/data/company";
 import NewsletterForm from "./NewsletterForm";
@@ -12,13 +15,26 @@ export default function Footer() {
   const exportNav = NAV_ITEMS.find((n) => n.label === "Export");
   const importNav = NAV_ITEMS.find((n) => n.label === "Import");
 
+  const [openSections, setOpenSections] = useState<Record<string, boolean>>({
+    export: false,
+    import: false,
+    company: false,
+  });
+
+  const toggleSection = (section: string) => {
+    setOpenSections((prev) => ({
+      ...prev,
+      [section]: !prev[section],
+    }));
+  };
+
   return (
     <footer className={styles.footer}>
       {/* Glow line */}
       <div className={styles.glowLine} />
 
       <div className={`container ${styles.footerGrid}`}>
-        {/* Brand Column */}
+        {/* Brand Column - Always Visible */}
         <div className={styles.brandCol}>
           <Link href="/" className={styles.footerLogo}>
             <Image
@@ -56,48 +72,123 @@ export default function Footer() {
               <span>Dhaka • Chattogram • Dubai</span>
             </div>
           </div>
-
         </div>
 
-        {/* Export Column */}
+        {/* Export Column (Accordion on Mobile) */}
         <div className={styles.linkCol}>
-          <h4 className={styles.colTitle}>Export</h4>
-          <ul className={styles.linkList}>
-            {exportNav?.children?.map((item) => (
-              <li key={item.href}>
-                <Link href={item.href} className={styles.footerLink}>
-                  <span className={styles.linkArrow}>→</span>
-                  {item.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
+          <button
+            className={styles.accordionHeader}
+            onClick={() => toggleSection("export")}
+            aria-expanded={openSections.export}
+          >
+            <h4 className={styles.colTitle}>Export</h4>
+            <ChevronDown
+              size={16}
+              className={`${styles.accordionChevron} ${
+                openSections.export ? styles.chevronRotated : ""
+              }`}
+            />
+          </button>
+          <div
+            className={`${styles.accordionContent} ${
+              openSections.export ? styles.accordionContentOpen : ""
+            }`}
+          >
+            <ul className={styles.linkList}>
+              {exportNav?.children?.map((item) => (
+                <li key={item.href}>
+                  <Link href={item.href} className={styles.footerLink}>
+                    <span className={styles.linkArrow}>→</span>
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
 
-        {/* Import Column */}
+        {/* Import & Company Column (Two separate Accordions on Mobile) */}
         <div className={styles.linkCol}>
-          <h4 className={styles.colTitle}>Import</h4>
-          <ul className={styles.linkList}>
-            {importNav?.children?.map((item) => (
-              <li key={item.href}>
-                <Link href={item.href} className={styles.footerLink}>
-                  <span className={styles.linkArrow}>→</span>
-                  {item.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
+          {/* Import Accordion */}
+          <div className={styles.accordionGroup}>
+            <button
+              className={styles.accordionHeader}
+              onClick={() => toggleSection("import")}
+              aria-expanded={openSections.import}
+            >
+              <h4 className={styles.colTitle}>Import</h4>
+              <ChevronDown
+                size={16}
+                className={`${styles.accordionChevron} ${
+                  openSections.import ? styles.chevronRotated : ""
+                }`}
+              />
+            </button>
+            <div
+              className={`${styles.accordionContent} ${
+                openSections.import ? styles.accordionContentOpen : ""
+              }`}
+            >
+              <ul className={styles.linkList}>
+                {importNav?.children?.map((item) => (
+                  <li key={item.href}>
+                    <Link href={item.href} className={styles.footerLink}>
+                      <span className={styles.linkArrow}>→</span>
+                      {item.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
 
-          <h4 className={styles.colTitle} style={{ marginTop: "2rem" }}>Company</h4>
-          <ul className={styles.linkList}>
-            <li><Link href="/about-us" className={styles.footerLink}><span className={styles.linkArrow}>→</span>About Us</Link></li>
-            <li><Link href="/ship-breaking" className={styles.footerLink}><span className={styles.linkArrow}>→</span>Ship Breaking</Link></li>
-            <li><Link href="/solar-power" className={styles.footerLink}><span className={styles.linkArrow}>→</span>Solar Power</Link></li>
-            <li><Link href="/contact-us" className={styles.footerLink}><span className={styles.linkArrow}>→</span>Contact Us</Link></li>
-          </ul>
+          {/* Company Accordion */}
+          <div className={`${styles.accordionGroup} ${styles.companyGroup}`}>
+            <button
+              className={styles.accordionHeader}
+              onClick={() => toggleSection("company")}
+              aria-expanded={openSections.company}
+            >
+              <h4 className={styles.colTitle}>Company</h4>
+              <ChevronDown
+                size={16}
+                className={`${styles.accordionChevron} ${
+                  openSections.company ? styles.chevronRotated : ""
+                }`}
+              />
+            </button>
+            <div
+              className={`${styles.accordionContent} ${
+                openSections.company ? styles.accordionContentOpen : ""
+              }`}
+            >
+              <ul className={styles.linkList}>
+                <li>
+                  <Link href="/about-us" className={styles.footerLink}>
+                    <span className={styles.linkArrow}>→</span>About Us
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/ship-breaking" className={styles.footerLink}>
+                    <span className={styles.linkArrow}>→</span>Ship Breaking
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/solar-power" className={styles.footerLink}>
+                    <span className={styles.linkArrow}>→</span>Solar Power
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/contact-us" className={styles.footerLink}>
+                    <span className={styles.linkArrow}>→</span>Contact Us
+                  </Link>
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
 
-        {/* Newsletter Column */}
+        {/* Newsletter Column - Always Visible */}
         <div className={styles.linkCol}>
           <h4 className={styles.colTitle}>Stay Updated</h4>
           <p className={styles.newsletterDesc}>
@@ -119,9 +210,13 @@ export default function Footer() {
             © {currentYear} ARIKO International. All rights reserved.
           </p>
           <div className={styles.bottomLinks}>
-            <Link href="/privacy-policy" className={styles.bottomLink}>Privacy Policy</Link>
+            <Link href="/privacy-policy" className={styles.bottomLink}>
+              Privacy Policy
+            </Link>
             <span className={styles.bottomDivider}>|</span>
-            <Link href="/terms-and-conditions" className={styles.bottomLink}>Terms & Conditions</Link>
+            <Link href="/terms-and-conditions" className={styles.bottomLink}>
+              Terms & Conditions
+            </Link>
           </div>
           <a href="#top" className={styles.backToTop} aria-label="Back to top">
             <ArrowUpCircle size={20} />
