@@ -29,6 +29,7 @@ export const NAV_ITEMS: NavItem[] = [
   },
   { label: "Ship Breaking", href: "/ship-breaking" },
   { label: "Solar Power", href: "/solar-power" },
+  { label: "Gallery", href: "/gallery" },
   { label: "About Us", href: "/about-us" },
   { label: "Contact Us", href: "/contact-us" },
 ];

@@ -37,7 +37,7 @@ export const EXPORT_PRODUCTS: Product[] = [
     longDesc:
       "ARIKO International exports premium zinc oxide, widely used in rubber manufacturing, ceramics, pharmaceuticals, and agriculture. Our zinc oxide is sourced from certified manufacturers and meets international purity standards.",
     details: [
-      "Purity: 99%+ ZnO",
+      "35-55% Zn",
       "Available in 25kg/50kg bags",
       "Used in rubber, ceramics, pharma",
       "Monthly capacity: 2,000 MT",

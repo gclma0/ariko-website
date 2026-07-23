@@ -84,7 +84,9 @@ export default function SolarPowerPage() {
                 const Icon = item.icon;
                 return (
                   <div key={i} className={`${styles.offeringCard} reveal`} style={{ transitionDelay: `${i * 0.2}s` }}>
-                    <div className={styles.offeringIcon}><Icon size={28} /></div>
+                    <div className={`${styles.offeringIcon} ${Icon === Sun ? styles.sunIcon : ""}`}>
+                      <Icon size={28} />
+                    </div>
                     <h3 className={styles.offeringTitle}>{item.title}</h3>
                     <p className={styles.offeringDesc}>{item.desc}</p>
                   </div>

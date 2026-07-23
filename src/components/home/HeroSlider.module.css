@@ -304,12 +304,8 @@
 
 /* ── Responsive ── */
 @media (max-width: 768px) {
-  .arrowLeft { left: var(--space-4); }
-  .arrowRight { right: var(--space-4); }
-
   .arrow {
-    width: 40px;
-    height: 40px;
+    display: none;
   }
 
   .scrollIndicator {

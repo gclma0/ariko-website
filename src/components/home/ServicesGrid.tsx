@@ -44,7 +44,7 @@ const SERVICES = [
     description:
       "Expanding into renewable energy with comprehensive solar power solutions for commercial and industrial clients across Bangladesh.",
     href: "/solar-power",
-    accentColor: "#00c8e8",
+    accentColor: "#ff9f00",
     delay: 0.6,
   },
 ];

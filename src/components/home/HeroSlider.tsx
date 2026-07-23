@@ -46,6 +46,10 @@ export default function HeroSlider() {
   const [current, setCurrent] = useState(0);
   const [animating, setAnimating] = useState(false);
   const [direction, setDirection] = useState<"next" | "prev">("next");
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [touchEnd, setTouchEnd] = useState<number | null>(null);
+
+  const minSwipeDistance = 50;
 
   const goTo = useCallback(
     (index: number, dir: "next" | "prev") => {
@@ -68,6 +72,27 @@ export default function HeroSlider() {
     goTo((current - 1 + SLIDES.length) % SLIDES.length, "prev");
   }, [current, goTo]);
 
+  const onTouchStart = (e: React.TouchEvent) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const onTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const onTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > minSwipeDistance;
+    const isRightSwipe = distance < -minSwipeDistance;
+    if (isLeftSwipe) {
+      next();
+    } else if (isRightSwipe) {
+      prev();
+    }
+  };
+
   useEffect(() => {
     const timer = setInterval(next, 6000);
     return () => clearInterval(timer);
@@ -76,7 +101,13 @@ export default function HeroSlider() {
   const slide = SLIDES[current];
 
   return (
-    <section className={styles.hero} aria-label="Hero slider">
+    <section
+      className={styles.hero}
+      aria-label="Hero slider"
+      onTouchStart={onTouchStart}
+      onTouchMove={onTouchMove}
+      onTouchEnd={onTouchEnd}
+    >
       {/* Background Images */}
       {SLIDES.map((s, i) => (
         <div

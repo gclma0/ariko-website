@@ -104,7 +104,7 @@ export const COMPANY: {
     { name: "Icon Fashion", url: "http://www.iconshopbd.com" },
     { name: "Alliance Leather Goods and Footwear Limited", url: "http://www.alliancefootwearbd.com" },
     { name: "Eco Trade International", url: "http://www.ecotradebd.com" },
-    { name: "Bhuiyan Enterprise", url: "http://www.bhuiyanenterprize.com" },
+    { name: "Syedpur Fisheries & Farms", url: "https://sffagro.com/" },
   ],
   groupHistory: `ARIKO International is a sister concern of EAST QUEEN GROUP, which is one of the oldest groups of Bangladesh and the 4th largest and oldest ship scrapers of the country. Established in the year 1968, the group has gone through many successes continuously. Our mission is to deliver excellence with integrity and mutual business benefits to all stakeholders across the globe.`,
 };
