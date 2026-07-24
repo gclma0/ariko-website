@@ -179,7 +179,7 @@ function Slide({ item, onOpen }: { item: GalleryItem; onOpen: (item: GalleryItem
         </div>
       ) : (
         <div className={styles.slideImage}>
-          <Image src={item.src} alt={item.title} fill sizes="280px" className={styles.slideImg} />
+          <Image src={item.src} alt={item.title} fill sizes="280px" loading="lazy" className={styles.slideImg} />
         </div>
       )}
 
