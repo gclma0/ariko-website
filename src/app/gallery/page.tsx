@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { createPortal } from "react-dom";
 import Image from "next/image";
 import PageHero from "@/components/ui/PageHero";
@@ -189,14 +189,69 @@ function Slide({ item, onOpen }: { item: GalleryItem; onOpen: (item: GalleryItem
 
 /* ── Carousel section ───────────────────────────── */
 function CarouselSection({ section, onOpen }: { section: GallerySection; onOpen: (item: GalleryItem) => void }) {
-  // Duplicate items enough times to ensure smooth infinite loop (min 6 cards wide)
-  const minRepeat = Math.ceil(6 / section.items.length) + 1;
-  const repeated = Array.from({ length: minRepeat * 2 }, (_, i) =>
-    section.items.map((item) => ({ ...item, _key: `${item.id}-${i}` }))
+  const trackRef   = useRef<HTMLDivElement>(null);
+  const rafRef     = useRef<number | null>(null);
+  const autoRef    = useRef(true);           // false while user is interacting
+  const dragRef    = useRef({ active: false, startX: 0, startScroll: 0 });
+  const resumeRef  = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const SLIDE_W = 296; // 280px slide + 16px gap
+  const oneSetPx  = section.items.length * SLIDE_W;
+
+  // How many full copies we need so the strip is always > 2× the viewport
+  const REPS = Math.max(Math.ceil((1920 * 2) / oneSetPx) + 2, 6);
+  const repeated = Array.from({ length: REPS }, (_, ri) =>
+    section.items.map((item) => ({ ...item, _key: `${item.id}-r${ri}` }))
   ).flat();
 
-  // Speed: fewer items = faster repeat needed
-  const duration = Math.max(section.items.length * 20, 60);
+  // --- RAF loop ---
+  useEffect(() => {
+    const track = trackRef.current;
+    if (!track) return;
+
+    const tick = () => {
+      if (autoRef.current) track.scrollLeft += 0.6;
+      // Seamless loop: jump back/forward by exactly one set width
+      if (track.scrollLeft >= oneSetPx * (REPS / 2)) track.scrollLeft -= oneSetPx;
+      if (track.scrollLeft < 0)                       track.scrollLeft += oneSetPx;
+      rafRef.current = requestAnimationFrame(tick);
+    };
+    rafRef.current = requestAnimationFrame(tick);
+    return () => { if (rafRef.current) cancelAnimationFrame(rafRef.current); };
+  }, [oneSetPx, REPS]);
+
+  // --- Pause / resume helpers ---
+  const pauseAuto = () => {
+    autoRef.current = false;
+    if (resumeRef.current) clearTimeout(resumeRef.current);
+  };
+  const resumeAuto = (delay = 1800) => {
+    if (resumeRef.current) clearTimeout(resumeRef.current);
+    resumeRef.current = setTimeout(() => { autoRef.current = true; }, delay);
+  };
+
+  // --- Mouse drag ---
+  const onMouseDown = (e: React.MouseEvent) => {
+    pauseAuto();
+    dragRef.current = { active: true, startX: e.clientX, startScroll: trackRef.current!.scrollLeft };
+    if (trackRef.current) trackRef.current.style.cursor = "grabbing";
+    e.preventDefault();
+  };
+  const onMouseMove = (e: React.MouseEvent) => {
+    if (!dragRef.current.active) return;
+    const dx = e.clientX - dragRef.current.startX;
+    if (trackRef.current) trackRef.current.scrollLeft = dragRef.current.startScroll - dx;
+  };
+  const onMouseUp = () => {
+    if (!dragRef.current.active) return;
+    dragRef.current.active = false;
+    if (trackRef.current) trackRef.current.style.cursor = "grab";
+    resumeAuto();
+  };
+
+  // --- Touch swipe (browser handles momentum natively) ---
+  const onTouchStart = () => pauseAuto();
+  const onTouchEnd   = () => resumeAuto(2500);
 
   return (
     <div className={styles.carouselSection}>
@@ -205,12 +260,16 @@ function CarouselSection({ section, onOpen }: { section: GallerySection; onOpen:
         <div className={styles.sectionLine} />
       </div>
 
-      {/* overflow:hidden viewport */}
       <div className={styles.trackViewport}>
-        {/* inner strip — CSS animation drives the scroll */}
         <div
-          className={styles.trackInner}
-          style={{ animationDuration: `${duration}s` }}
+          className={styles.track}
+          ref={trackRef}
+          onMouseDown={onMouseDown}
+          onMouseMove={onMouseMove}
+          onMouseUp={onMouseUp}
+          onMouseLeave={onMouseUp}
+          onTouchStart={onTouchStart}
+          onTouchEnd={onTouchEnd}
         >
           {repeated.map((item) => (
             <Slide key={item._key} item={item} onOpen={onOpen} />

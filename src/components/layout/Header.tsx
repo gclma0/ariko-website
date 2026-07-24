@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useState, useEffect, useRef } from "react";
-import { Phone, Mail, Menu, X, ChevronDown } from "lucide-react";
+import { Phone, Mail, Menu, ChevronDown } from "lucide-react";
 import { NAV_ITEMS, NavItem } from "@/data/navigation";
 import { COMPANY } from "@/data/company";
 import styles from "./Header.module.css";
@@ -158,7 +158,7 @@ export default function Header() {
             aria-label="Toggle mobile menu"
             aria-expanded={mobileOpen}
           >
-            {mobileOpen ? <X size={22} /> : <Menu size={22} />}
+          <Menu size={22} />
           </button>
         </div>
       </header>
@@ -176,30 +176,15 @@ export default function Header() {
       >
         <div className={styles.mobileDrawerHeader}>
           <Link href="/" className={styles.logo}>
-            <div className={styles.logoMark}>
-              <svg width="30" height="30" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <polygon points="18,2 34,32 2,32" fill="none" stroke="url(#g3)" strokeWidth="2.5" strokeLinejoin="round"/>
-                <polygon points="18,10 28,28 8,28" fill="url(#g4)" opacity="0.3"/>
-                <defs>
-                  <linearGradient id="g3" x1="0" y1="0" x2="1" y2="1">
-                    <stop offset="0%" stopColor="#00c8e8"/>
-                    <stop offset="100%" stopColor="#0080ff"/>
-                  </linearGradient>
-                  <linearGradient id="g4" x1="0" y1="0" x2="1" y2="1">
-                    <stop offset="0%" stopColor="#00c8e8"/>
-                    <stop offset="100%" stopColor="#0080ff"/>
-                  </linearGradient>
-                </defs>
-              </svg>
-            </div>
-            <div className={styles.logoText}>
-              <span className={styles.logoName}>ARIKO</span>
-              <span className={styles.logoSub}>INTERNATIONAL</span>
-            </div>
+            <Image
+              src="/logo.svg"
+              alt="ARIKO International Logo"
+              width={160}
+              height={24}
+              className={styles.logoImage}
+              unoptimized
+            />
           </Link>
-          <button onClick={() => setMobileOpen(false)} className={styles.mobileClose} aria-label="Close menu">
-            <X size={22} />
-          </button>
         </div>
 
         <nav className={styles.mobileNav}>

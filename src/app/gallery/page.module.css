@@ -37,46 +37,42 @@
   background: var(--color-border);
 }
 
-/* ── Viewport (clips the scrolling strip) ── */
+/* ── Viewport (clips the strip, fades edges) ── */
 .trackViewport {
   overflow: hidden;
   width: 100%;
-  /* Fade edges for a polished look */
   -webkit-mask-image: linear-gradient(
     to right,
     transparent 0%,
-    black 4%,
-    black 96%,
+    black 3%,
+    black 97%,
     transparent 100%
   );
   mask-image: linear-gradient(
     to right,
     transparent 0%,
-    black 4%,
-    black 96%,
+    black 3%,
+    black 97%,
     transparent 100%
   );
 }
 
-/* ── Inner strip — GPU-animated ── */
-.trackInner {
+/* ── Scrollable track (RAF moves scrollLeft) ── */
+.track {
   display: flex;
   gap: 1rem;
-  width: max-content;
-  /* Scroll from 0 → -50% (seamless because content is doubled) */
-  animation: autoScroll linear infinite;
-  will-change: transform;
+  overflow-x: scroll;
+  scroll-behavior: auto;    /* must be auto — smooth would fight the RAF */
+  padding: 0.25rem var(--space-8) var(--space-4);
+  cursor: grab;
+  /* Hide scrollbar across browsers */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  /* Prevent iOS rubber-band from confusing the loop */
+  overscroll-behavior-x: none;
 }
 
-/* Pause when user hovers anywhere on the strip */
-.trackViewport:hover .trackInner {
-  animation-play-state: paused;
-}
-
-@keyframes autoScroll {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
-}
+.track::-webkit-scrollbar { display: none; }
 
 /* ── Slide card ── */
 .slide {
