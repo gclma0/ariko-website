@@ -3,9 +3,13 @@ export interface Product {
   name: string;
   shortDesc: string;
   longDesc: string;
+  longDescHtml?: string;
   details: string[];
   image: string;
+  imageObjectFit?: "cover" | "contain";
   heroImage?: string;
+  heroImagePosition?: string;
+  videoBackground?: string;
   icon: string;
 }
 
@@ -101,8 +105,8 @@ export const EXPORT_PRODUCTS: Product[] = [
       "MOQ: 1,000 sq ft",
       "Monthly capacity: 100,000+ sq ft",
     ],
-    heroImage: "/products/leather-goods-hero.png",
-    image: "/products/leather-goods-body.png",
+    heroImage: "/products/leather-goods-hero.jpg",
+    image: "/products/leather-goods-body.jpg",
     icon: "👜",
   },
   {

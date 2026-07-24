@@ -26,7 +26,7 @@ export default function ShipBreakingPage() {
         title="Ship Breaking Division"
         subtitle="Bangladesh's 4th largest ship scrapping operation — established 1981. Safety, integrity, and environmental responsibility."
         breadcrumb={[{ label: "Ship Breaking" }]}
-        image="/products/ship-breaking-hero.jpg"
+        videoBackground="/sb.mp4"
         tag="Est. 1981"
       />
 

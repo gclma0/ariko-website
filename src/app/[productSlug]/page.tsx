@@ -58,6 +58,8 @@ export default async function ProductFlatPage({ params }: Props) {
           { label: product.name }
         ]}
         image={product.heroImage || product.image}
+        videoBackground={product.videoBackground}
+        heroImagePosition={product.heroImagePosition}
         tag={isExport ? "Export Product" : "Import Product"}
       />
 
@@ -71,7 +73,14 @@ export default async function ProductFlatPage({ params }: Props) {
                 <h2 className={styles.sectionTitle}>
                   About <span className="text-gradient">{product.name}</span>
                 </h2>
-                <p className={styles.bodyText}>{product.longDesc}</p>
+                {product.longDescHtml ? (
+                  <p
+                    className={styles.bodyText}
+                    dangerouslySetInnerHTML={{ __html: product.longDescHtml }}
+                  />
+                ) : (
+                  <p className={styles.bodyText}>{product.longDesc}</p>
+                )}
 
                 <div className={`${styles.imageWrap} reveal`} style={{ transitionDelay: "0.5s" }}>
                   <Image
@@ -80,6 +89,7 @@ export default async function ProductFlatPage({ params }: Props) {
                     fill
                     sizes="(max-width: 768px) 100vw, 60vw"
                     className={styles.productImage}
+                    style={{ objectFit: product.imageObjectFit ?? "cover" }}
                   />
                 </div>
               </div>

@@ -17,6 +17,7 @@ export const IMPORT_PRODUCTS: Product[] = [
       "Test certificates available",
     ],
     heroImage: "/products/aggregate-hero.jpg",
+    videoBackground: "/gbb.mp4",
     image: "/products/aggregate-body.jpg",
     icon: "🪨",
   },
@@ -35,17 +36,18 @@ export const IMPORT_PRODUCTS: Product[] = [
       "Capacity: 10,000-50,000 MT per shipment",
       "ASTM/ISO analysis reports",
     ],
-    heroImage: "/products/coal-hero.png",
-    image: "/products/coal-body.png",
+    heroImage: "/products/coal-hero.jpg",
+    image: "/products/coal-body.jpg",
     icon: "⛏️",
   },
   {
     slug: "import-automobile-spare-parts",
     name: "Automobile Spare Parts",
     shortDesc:
-      "Genuine HKS Japanese car accessories and auto spare parts imported since 2004.",
+      "Authorized importer of genuine Japanese automotive parts and accessories, serving Bangladesh since 2004.",
     longDesc:
-      "Since 2004, ARIKO International has been an authorized dealer of HKS (Japan) products in Bangladesh. We import car air filters, oil filters, exhaust pipes, performance/tuning parts, and auto lamps from Depo (Taiwan) and Eagle Eyes.",
+      "Since 2004, ARIKO International has served as an authorized dealer of HKS Japan products in Bangladesh, supplying premium automotive components to the local market. Our portfolio includes car air filters, oil filters, exhaust systems, performance tuning parts, and auto lamps sourced from Depo (Taiwan) and Eagle Eyes. We are also the country representative for Model Automotive Parts and HnD Automotive Group, two internationally recognized automotive parts companies.",
+    longDescHtml: `Since 2004, ARIKO International has served as an authorized dealer of <strong>HKS Japan</strong> products in Bangladesh, supplying premium automotive components to the local market. Our portfolio includes car air filters, oil filters, exhaust systems, performance tuning parts, and auto lamps sourced from <strong>Depo (Taiwan)</strong> and <strong>Eagle Eyes</strong>.<br/><br/>We are also the country representative for <a href="https://modelautomotiveparts.com/" target="_blank" rel="noopener noreferrer" style="color:var(--color-accent);font-weight:600;text-decoration:underline;text-underline-offset:3px;">Model Automotive Parts</a> and <a href="https://hndautomotiveparts.com/pages/about-us" target="_blank" rel="noopener noreferrer" style="color:var(--color-accent);font-weight:600;text-decoration:underline;text-underline-offset:3px;">HnD Automotive Group</a> — two internationally recognized automotive parts companies trusted across global markets.`,
     details: [
       "Brands: HKS Japan, Depo Taiwan, Eagle Eyes",
       "Products: Air filters, oil filters, exhaust, tuning parts, auto lamps",
@@ -54,7 +56,10 @@ export const IMPORT_PRODUCTS: Product[] = [
       "Dealer since: 2004",
       "Delivery: Nationwide in Bangladesh",
     ],
-    image: "/hero-millscale.jpg",
+    heroImage: "/products/auto-hero.jpg",
+    heroImagePosition: "center center",
+    image: "/products/auto-body.jpg",
+    imageObjectFit: "contain",
     icon: "🚗",
   },
 ];

@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import styles from "./PageHero.module.css";
 
@@ -7,6 +9,8 @@ interface PageHeroProps {
   breadcrumb?: { label: string; href?: string }[];
   image?: string;
   tag?: string;
+  videoBackground?: string;
+  heroImagePosition?: string;
 }
 
 export default function PageHero({
@@ -15,20 +19,39 @@ export default function PageHero({
   breadcrumb,
   image = "/hero-port.jpg",
   tag,
+  videoBackground,
+  heroImagePosition,
 }: PageHeroProps) {
   return (
-    <section className={styles.hero} aria-label="Page header">
+    <section
+      className={`${styles.hero} ${videoBackground ? styles.heroVideo : ""}`}
+      aria-label="Page header"
+    >
       <div className={styles.bgWrap}>
-        <Image
-          src={image}
-          alt={title}
-          fill
-          priority
-          sizes="100vw"
-          className={styles.bgImage}
-        />
-        <div className={styles.overlay} />
-        <div className={styles.gridPattern} />
+        {videoBackground ? (
+          <video
+            src={videoBackground}
+            autoPlay
+            loop
+            muted
+            playsInline
+            className={styles.bgVideo}
+            ref={(el) => {
+              if (el) el.playbackRate = 0.7;
+            }}
+          />
+        ) : (
+          <Image
+            src={image}
+            alt={title}
+            fill
+            priority
+            sizes="100vw"
+            className={styles.bgImage}
+            style={heroImagePosition ? { objectPosition: heroImagePosition } : undefined}
+          />
+        )}
+        <div className={videoBackground ? styles.overlayVideo : styles.overlay} />
       </div>
 
       <div className={`container ${styles.content}`}>

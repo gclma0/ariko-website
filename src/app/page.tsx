@@ -3,6 +3,7 @@ import HeroSlider from "@/components/home/HeroSlider";
 import StatsBar from "@/components/home/StatsBar";
 import ServicesGrid from "@/components/home/ServicesGrid";
 import OverviewCards from "@/components/home/OverviewCards";
+import VideoShowcase from "@/components/home/VideoShowcase";
 import ScrollRevealWrapper from "@/components/ui/ScrollRevealWrapper";
 
 export const metadata: Metadata = {
@@ -19,6 +20,7 @@ export default function HomePage() {
       <ScrollRevealWrapper>
         <ServicesGrid />
         <OverviewCards />
+        <VideoShowcase />
       </ScrollRevealWrapper>
     </>
   );
